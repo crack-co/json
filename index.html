@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSONCRACK TERMINAL</title>
+  <style>
+    /* Body style with gradient background */
+    body {
+      font-family: 'Source Code Pro', monospace;
+      background: linear-gradient(135deg, #1c1c1c, #2a2a2a);
+      color: #33ff33;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Container setup */
+    .container {
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 15px;
+      border: 2px solid #33ff33;
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 900px;
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* ASCII Art Styling */
+    .ascii-art {
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* Header styling */
+    h1 {
+      font-size: 32px;
+      color: #ffcc00;
+      text-align: center;
+      font-family: 'Source Code Pro', monospace;
+    }
+
+    /* Styling for the output section */
+    .section {
+      margin-bottom: 20px;
+      white-space: pre-wrap;
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 10px;
+      border: 1px solid #33ff33;
+      border-radius: 8px;
+      background-color: #1a1a1a;
+    }
+
+    /* Styling for command input section */
+    .command-line {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .command-line input {
+      background-color: #333;
+      color: #33ff33;
+      border: 2px solid #33ff33;
+      border-radius: 8px;
+      padding: 8px;
+      width: 100%;
+      font-size: 16px;
+      font-family: 'Source Code Pro', monospace;
+      transition: all 0.3s ease;
+    }
+
+    .command-line input:focus {
+      border-color: #ffcc00;
+      box-shadow: 0 0 8px 2px rgba(255, 204, 0, 0.5);
+    }
+
+    .command-line input::placeholder {
+      color: #66ff66;
+    }
+
+    /* Enhancing output appearance */
+    .section h2 {
+      color: #ffcc00;
+      font-size: 18px;
+      margin-top: 0;
+    }
+
+    .section pre {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* Smooth scroll effect */
+    .section::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .section::-webkit-scrollbar-thumb {
+      background-color: #33ff33;
+      border-radius: 10px;
+    }
+
+    /* Animations */
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .ascii-art, h1, .section {
+      animation: slideIn 1s ease-out;
+    }
+
+    /* Footer Styling */
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #1a1a1a;
+      border-top: 2px solid #33ff33;
+    }
+
+    footer a {
+      color: #33ff33;
+      font-size: 18px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: #ffcc00;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- ASCII Art section with updated design -->
+  <div class="ascii-art">
+    <pre>
+      CCCCC  RRRRR   AAAAA   CCCCC  K   K
+     C       R   R  A   A   C       K  K
+     C       RRRRR  AAAAA   C       KKK
+     C       R  R   A   A   C       K  K
+      CCCCC  R   R  A   A   CCCCC  K   K
+    </pre>
+  </div>
+  
+  <!-- Title -->
+  <h1>JSONCRACK TERMINAL</h1>
+
+  <!-- Output section -->
+  <div class="section" id="output">
+    <h2>Type a command below:</h2>
+    <pre>
+      Welcome to JSONCRACK TERMINAL.
+      Available commands:
+      - info        : View team information.
+      - members     : List all members with full details.
+      - powers <name>: View powers of a specific member (e.g., powers Molecule Man).
+      - CA          : Shows the contract address.
+    </pre>
+  </div>
+
+  <!-- Command line input -->
+  <div class="command-line">
+    <span>&gt;</span>
+    <input type="text" id="commandInput" placeholder="Type your command here..." autofocus>
+  </div>
+</div>
+
+<!-- Footer with Twitter link -->
+<footer>
+  <p>Follow us on <a href="https://x.com/jsoncrackterm" target="_blank">Twitter</a></p>
+</footer>
+
+<script>
+  // Define the JSON data
+  const data = {
+    squadName: "Super hero squad",
+    homeTown: "Metro City",
+    formed: 2016,
+    secretBase: "Super tower",
+    active: true,
+    members: [
+      {
+        name: "Molecule Man",
+        age: 29,
+        secretIdentity: "Dan Jukes",
+        powers: [
+          "Radiation resistance",
+          "Turning tiny",
+          "Radiation blast"
+        ]
+      },
+      {
+        name: "Madame Uppercut",
+        age: 39,
+        secretIdentity: "Jane Wilson",
+        powers: [
+          "Million tonne punch",
+          "Damage resistance",
+          "Superhuman reflexes"
+        ]
+      },
+      {
+        name: "Eternal Flame",
+        age: 1000000,
+        secretIdentity: "Unknown",
+        powers: [
+          "Immortality",
+          "Heat Immunity",
+          "Inferno",
+          "Teleportation",
+          "Interdimensional travel"
+        ]
+      }
+    ]
+  };
+
+  // Command processing function
+  function processCommand(command) {
+    const outputElement = document.getElementById("output");
+    let response = "";
+
+    // Trim the input command and handle different commands
+    const trimmedCommand = command.trim().toLowerCase();
+
+    if (trimmedCommand === "info") {
+      response = `
+        Squad Name: ${data.squadName}
+        Home Town: ${data.homeTown}
+        Formed: ${data.formed}
+        Secret Base: ${data.secretBase}
+        Active: ${data.active ? "Yes" : "No"}
+      `;
+    } else if (trimmedCommand === "members") {
+      // Display each member with full details
+      response = data.members.map(member => {
+        return `
+        - ${member.name}:
+            Age: ${member.age}
+            Secret Identity: ${member.secretIdentity}
+            Powers:
+              - ${member.powers.join("\n              - ")}
+        `;
+      }).join("\n");
+    } else if (trimmedCommand.startsWith("powers")) {
+      const name = trimmedCommand.split(" ")[1];
+      const member = data.members.find(m => m.name.toLowerCase() === name.toLowerCase());
+
+      if (member) {
+        response = `${member.name}'s Powers:\n` + member.powers.join("\n");
+      } else {
+        response = `Member "${name}" not found.`;
+      }
+    } else if (trimmedCommand === "ca") {
+      response = "Contract address"; // Updated response for the "CA" command
+    } else {
+      response = `Unknown command. Type 'info' for team info, 'members' for the members list, or 'powers <name>' for a member's powers.`;
+    }
+
+    // Append the response to the output
+    outputElement.innerHTML += `\n&gt; ${command}\n${response}\n`;
+    outputElement.scrollTop = outputElement.scrollHeight; // Scroll to bottom
+  }
+
+  // Listen for input and trigger the command process
+  document.getElementById("commandInput").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      const command = event.target.value;
+      processCommand(command);
+      event.target.value = ""; // Clear the input field
+    }
+  });
+</script>
+
+</body>
+</html>
